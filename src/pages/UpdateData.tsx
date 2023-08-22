@@ -108,7 +108,7 @@ export default function UpdateAlunos() {
                 p: 2.5,
               }}
             >
-              <Image src={logo} alt="" height={160} quality={100} priority />
+              <Image src={logo} alt="" height={100} quality={100} priority />
               <Typography sx={TituloDaPagina}>
                 Consulta / Atualização de dados
               </Typography>
