@@ -1,0 +1,48 @@
+
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.containerTable100 {
+  width: 100%;
+  min-height: 100vh;
+  padding: 33px 30px;
+  text-align: center;
+}
+
+
+.searchInput {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 50px;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+  margin: 40px 0 5px 60px;
+  width: 40%;
+}
+
+.searchInput:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.searchWrapper {
+  position: relative;
+  top:30px
+}
+
+.searchIconWrapper {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  transform: translateY(-50%);
+}
+
+
+
+  
+   
