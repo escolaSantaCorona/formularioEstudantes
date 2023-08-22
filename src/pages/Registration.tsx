@@ -66,7 +66,7 @@ export default function CadastroAlunos() {
                 padding: "2.5em 52px",
               }}
             >
-              <Image src={logo} alt="" height={160} quality={100} priority />
+              <Image src={logo} alt="" height={100} quality={100} priority />
               <Typography sx={TituloDaPagina}>Cadastro de Alunos</Typography>
               <Typography sx={SubtituloDaPagina}>EMEF SANTA CORONA</Typography>
             </Box>
