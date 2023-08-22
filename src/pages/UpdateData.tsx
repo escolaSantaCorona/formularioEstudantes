@@ -245,7 +245,7 @@ export default function UpdateAlunos() {
 
           <List sx={ListStyle}>
             <Typography sx={TituloSecaoStyle}>
-              Seção 3 - Dados de Movimentação Escolar:
+              Seção 4 - Dados de Movimentação Escolar:
             </Typography>
             <Grid container spacing={2}>
               {CamposdeMovimentacaoEscolarToUpdate.map(({ label, id }) => (
