@@ -85,7 +85,7 @@ function renderPhoneNumbers(numbers: string): JSX.Element[] {
   });
 }
 
-
+//certidao_cpf_rg
 export const StudentTable: React.FC<StudentTableProps> = React.memo(
   ({ items }) => (
     <div className={styles.containerTable100} aria-label="Exemplo de tabela responsiva">
@@ -95,6 +95,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
             <TableRow>
               <StyledTableCell align="center">ID</StyledTableCell>
               <StyledTableCell align="center">Nome</StyledTableCell>
+               <StyledTableCell align="center">Documento</StyledTableCell>
               <StyledTableCell align="center">Nascimento</StyledTableCell>
               <StyledTableCell align="center">Mãe</StyledTableCell>
               <StyledTableCell align="center">Pai</StyledTableCell>
@@ -112,6 +113,9 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   {item.nome_do_aluno}
+                </StyledTableCell>
+                 <StyledTableCell align="center">
+                  {item.certidao_cpf_rg}
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   {formatDate(item.data_de_nascimento)}
