@@ -39,7 +39,7 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export const StyledTableCellBreakText = styled(TableCell)<StyledTableCellProps>(({ theme, contentLength }) => ({
+export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellProps>(({ theme, contentLength }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
@@ -50,6 +50,19 @@ export const StyledTableCellBreakText = styled(TableCell)<StyledTableCellProps>(
   },
   // Aplica quebra de linha se o conteúdo for longo
   wordBreak: contentLength > 14 ? 'break-all' : 'normal',
+}));
+
+export const StyledTableCellTelefoneText = styled(TableCell)<StyledTableCellProps>(({ theme, contentLength }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+    fontSize: 16,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 12,
+  },
+  // Aplica quebra de linha se o conteúdo for longo
+  wordBreak: contentLength > 20 ? 'break-all' : 'normal',
 }));
 
 
@@ -131,9 +144,9 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 <StyledTableCell align="center">
                   {item.nome_do_aluno}
                 </StyledTableCell>
-                 <StyledTableCellBreakText align="center" contentLength={item.certidao_cpf_rg.length}>
+                 <StyledTableCellDocumentoText align="center" contentLength={item.certidao_cpf_rg.length}>
                   {item.certidao_cpf_rg}
-                </StyledTableCellBreakText>
+                <StyledTableCellDocumentoText>
                 <StyledTableCell align="center">
                   {formatDate(item.data_de_nascimento)}
                 </StyledTableCell>
@@ -143,9 +156,9 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                   {item.turma_em_2023}
                 </StyledTableCell>
 
-                <StyledTableCell align="center">
+                <StyledTableCellTelefoneText align="center">
                   {renderPhoneNumbers(item.telefone)}
-                </StyledTableCell>
+                </StyledTableCellTelefoneText>
 
                 <StyledTableCell align="center">
                   {item.movimentacao}
