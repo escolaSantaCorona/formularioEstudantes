@@ -25,8 +25,6 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-
-
 export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
@@ -35,6 +33,20 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+
+export const StyledTableCellBreakText = styled(TableCell)(({ theme, contentLength }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+    fontSize: 16,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 12,
+  },
+  // Aplica quebra de linha se o conteúdo for longo
+  wordBreak: contentLength > 14 ? 'break-all' : 'normal',
+}));
+
 
 export const SearchInput: React.FC<SearchInputProps> = React.memo(
   ({ value, onChange }) => (
@@ -114,9 +126,9 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 <StyledTableCell align="center">
                   {item.nome_do_aluno}
                 </StyledTableCell>
-                 <StyledTableCell align="center">
+                 <StyledTableCellBreakText align="center" contentLength={item.certidao_cpf_rg.length}>
                   {item.certidao_cpf_rg}
-                </StyledTableCell>
+                </StyledTableCellBreakText>
                 <StyledTableCell align="center">
                   {formatDate(item.data_de_nascimento)}
                 </StyledTableCell>
