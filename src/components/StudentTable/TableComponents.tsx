@@ -13,6 +13,11 @@ import styles from './table.module.css'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { SearchInputProps, StudentTableProps } from "@/interfaces/Interface";
 import { formatDate } from "@/utils/contants";
+import { TableCellProps } from '@mui/material/TableCell';
+
+interface StyledTableCellProps extends TableCellProps {
+  contentLength: number;
+}
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -34,7 +39,7 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export const StyledTableCellBreakText = styled(TableCell)(({ theme, contentLength }) => ({
+export const StyledTableCellBreakText = styled(TableCell)<StyledTableCellProps>(({ theme, contentLength }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
