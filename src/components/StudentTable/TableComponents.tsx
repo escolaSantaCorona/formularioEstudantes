@@ -36,6 +36,9 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
   "&:last-child td, &:last-child th": {
     border: 0,
+    paddingTop:16,
+    paddingLeft:16,
+    paddingBottom:10,
   },
 }));
 
@@ -47,6 +50,9 @@ export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellPro
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 12,
+    paddingTop:16,
+    paddingLeft:16,
+    paddingBottom:10,
   },
   // Aplica quebra de linha se o conteúdo for longo
   wordBreak: contentLength > 14 ? 'break-all' : 'normal',
