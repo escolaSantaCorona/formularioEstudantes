@@ -156,7 +156,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                   {item.turma_em_2023}
                 </StyledTableCell>
 
-                <StyledTableCellTelefoneText align="center">
+                <StyledTableCellTelefoneText align="center" contentLength={item.telefone}>
                   {renderPhoneNumbers(item.telefone)}
                 </StyledTableCellTelefoneText>
 
