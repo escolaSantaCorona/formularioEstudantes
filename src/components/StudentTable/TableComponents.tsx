@@ -146,7 +146,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 </StyledTableCell>
                  <StyledTableCellDocumentoText align="center" contentLength={item.certidao_cpf_rg.length}>
                   {item.certidao_cpf_rg}
-                <StyledTableCellDocumentoText>
+                 </StyledTableCellDocumentoText>
                 <StyledTableCell align="center">
                   {formatDate(item.data_de_nascimento)}
                 </StyledTableCell>
