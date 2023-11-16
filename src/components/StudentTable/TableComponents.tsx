@@ -52,18 +52,7 @@ export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellPro
   wordBreak: contentLength > 14 ? 'break-all' : 'normal',
 }));
 
-export const StyledTableCellTelefoneText = styled(TableCell)<StyledTableCellProps>(({ theme, contentLength }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    fontSize: 16,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 12,
-  },
-  // Aplica quebra de linha se o conteúdo for longo
-  wordBreak: contentLength > 20 ? 'break-all' : 'normal',
-}));
+
 
 
 export const SearchInput: React.FC<SearchInputProps> = React.memo(
@@ -96,24 +85,23 @@ function renderPhoneNumbers(numbers: string): JSX.Element[] {
     const pureNumber = numberWithLabel.replace(/[^0-9]/g, '');
 
     // Identificando se o número tem 11 dígitos, o que indica ser celular
-    const isMobile = pureNumber.startsWith("9",6)||pureNumber.startsWith("9",5)||pureNumber.startsWith("9",2)
+    const isMobile = pureNumber.startsWith("9",6)||pureNumber.startsWith("9",5)||pureNumber.startsWith("9",2);
   
     // Renderização como link para celulares ou texto normal para outros números
-   return (
-      <React.Fragment key={idx}>
-        {idx > 0 && ', '}
+    return (
+      <div key={idx}> {/* Cada número em um novo elemento de bloco */}
         {isMobile ? (
           <a href={`https://wa.me/55${pureNumber}`} target="_blank" rel="noopener noreferrer">
             {numberWithLabel}
-          
           </a>
         ) : (
           <span>{numberWithLabel}</span>
         )}
-      </React.Fragment>
+      </div>
     );
   });
 }
+
 
 //certidao_cpf_rg
 export const StudentTable: React.FC<StudentTableProps> = React.memo(
@@ -156,9 +144,9 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                   {item.turma_em_2023}
                 </StyledTableCell>
 
-                <StyledTableCellTelefoneText align="center" contentLength={item.telefone.length}>
+                <StyledTableCell align="center">
             {renderPhoneNumbers(item.telefone)}
-                </StyledTableCellTelefoneText>
+                </StyledTableCell>
 
 
                 <StyledTableCell align="center">
