@@ -127,14 +127,14 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
             <TableRow>
               <StyledTableCell align="center">ID</StyledTableCell>
               <StyledTableCell align="center">Nome</StyledTableCell>
-               <StyledTableCell align="center">Documento</StyledTableCell>
-              <StyledTableCell align="center">Nascimento</StyledTableCell>
+               <StyledTableCell align="center">Doc.</StyledTableCell>
+              <StyledTableCell align="center">Nasc.</StyledTableCell>
               <StyledTableCell align="center">Mãe</StyledTableCell>
               <StyledTableCell align="center">Pai</StyledTableCell>
               <StyledTableCell align="center">Turma</StyledTableCell>
-              <StyledTableCell align="center">Telefone</StyledTableCell>
-              <StyledTableCell align="center">Movimento</StyledTableCell>
-              <StyledTableCell align="center">Data Movimento</StyledTableCell>
+              <StyledTableCell align="center">Fone</StyledTableCell>
+              <StyledTableCell align="center">Mov.</StyledTableCell>
+              <StyledTableCell align="center">Data.Mov</StyledTableCell>
                <StyledTableCell align="center">Rematricula</StyledTableCell>
             </TableRow>
           </TableHead>
