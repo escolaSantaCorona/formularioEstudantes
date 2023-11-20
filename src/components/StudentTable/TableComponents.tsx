@@ -127,6 +127,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
               <StyledTableCell align="center">Telefone</StyledTableCell>
               <StyledTableCell align="center">Movimento</StyledTableCell>
               <StyledTableCell align="center">Data Movimento</StyledTableCell>
+               <StyledTableCell align="center">Rematricula</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -160,6 +161,9 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   {formatDate(item.data_movimento)}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {item.observacoes}
                 </StyledTableCell>
               </StyledTableRow>
             ))}
