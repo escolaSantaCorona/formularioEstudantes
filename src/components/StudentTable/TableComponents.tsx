@@ -24,11 +24,14 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
     fontSize: 16,
+    minWidth: 100, // Set a minimum width for the header cells
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 12,
+    minWidth: 100, // Set a minimum width for the body cells
   },
 }));
+
 
 export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
@@ -42,21 +45,26 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellProps>(({ theme, contentLength }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    fontSize: 16,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 12,
-    paddingTop:16,
-    paddingLeft:16,
-    paddingBottom:10,
-  },
-  // Aplica quebra de linha se o conteúdo for longo
-  wordBreak: contentLength > 14 ? 'break-all' : 'normal',
-}));
+export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellProps>(
+  ({ theme, contentLength }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+      fontSize: 16,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 12,
+      paddingTop: 16,
+      paddingLeft: 16,
+      paddingBottom: 10,
+    },
+    // Here we're setting a conditional for when the content's length is greater than 14 characters.
+    // If the content is long, we're allowing it to break onto the next line to prevent overflow.
+    wordBreak: contentLength > 14 ? 'break-all' : 'normal',
+    // You might want to add a minWidth here as suggested, for example:
+    minWidth: contentLength > 14 ? '150px' : '100px', // Adjust minimum width based on content length
+  })
+);
 
 
 
