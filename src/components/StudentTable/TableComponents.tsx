@@ -39,9 +39,9 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
   "&:last-child td, &:last-child th": {
     border: 0,
-    paddingTop:16,
-    paddingLeft:16,
-    paddingBottom:10,
+    paddingTop: 16,
+    paddingLeft: 16,
+    paddingBottom: 10,
   },
 }));
 
@@ -71,7 +71,7 @@ export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellPro
 
 export const SearchInput: React.FC<SearchInputProps> = React.memo(
   ({ value, onChange }) => (
-    <div  className={styles.searchWrapper}>
+    <div className={styles.searchWrapper}>
       <input
         type="text"
         className={styles.searchInput}
@@ -99,8 +99,8 @@ function renderPhoneNumbers(numbers: string): JSX.Element[] {
     const pureNumber = numberWithLabel.replace(/[^0-9]/g, '');
 
     // Identificando se o número tem 11 dígitos, o que indica ser celular
-    const isMobile = pureNumber.startsWith("9",6)||pureNumber.startsWith("9",5)||pureNumber.startsWith("9",2);
-  
+    const isMobile = pureNumber.startsWith("9", 6) || pureNumber.startsWith("9", 5) || pureNumber.startsWith("9", 2);
+
     // Renderização como link para celulares ou texto normal para outros números
     return (
       <div key={idx}> {/* Cada número em um novo elemento de bloco */}
@@ -127,7 +127,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
             <TableRow>
               <StyledTableCell align="center">ID</StyledTableCell>
               <StyledTableCell align="center">Nome</StyledTableCell>
-               <StyledTableCell align="center">Doc.</StyledTableCell>
+              <StyledTableCell align="center">Doc.</StyledTableCell>
               <StyledTableCell align="center">Nasc.</StyledTableCell>
               <StyledTableCell align="center">Mãe</StyledTableCell>
               <StyledTableCell align="center">Pai</StyledTableCell>
@@ -135,7 +135,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
               <StyledTableCell align="center">Fone</StyledTableCell>
               <StyledTableCell align="center">Mov.</StyledTableCell>
               <StyledTableCell align="center">Data.Mov</StyledTableCell>
-               
+
             </TableRow>
           </TableHead>
           <TableBody>
@@ -147,9 +147,12 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 <StyledTableCell align="center">
                   {item.nome_do_aluno}
                 </StyledTableCell>
-                 <StyledTableCellDocumentoText align="center" contentLength={item.certidao_cpf_rg.length}>
+                <StyledTableCellDocumentoText
+                  align="center"
+                  contentLength={item.certidao_cpf_rg ? item.certidao_cpf_rg.length : 0}>
                   {item.certidao_cpf_rg}
-                 </StyledTableCellDocumentoText>
+                </StyledTableCellDocumentoText>
+
                 <StyledTableCell align="center">
                   {formatDate(item.data_de_nascimento)}
                 </StyledTableCell>
@@ -160,7 +163,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 </StyledTableCell>
 
                 <StyledTableCell align="center">
-            {renderPhoneNumbers(item.telefone)}
+                  {renderPhoneNumbers(item.telefone)}
                 </StyledTableCell>
 
 
@@ -170,7 +173,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 <StyledTableCell align="center">
                   {formatDate(item.data_movimento)}
                 </StyledTableCell>
-              
+
               </StyledTableRow>
             ))}
           </TableBody>
@@ -179,5 +182,4 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
     </div>
   )
 );
-
 
