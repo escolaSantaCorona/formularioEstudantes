@@ -175,7 +175,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                   {formatDate(item.data_movimento)}
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  {formatDate(item.observações)}
+                  {item.observações}
                 </StyledTableCell>
 
               </StyledTableRow>
