@@ -108,7 +108,7 @@ export default function UpdateAlunos() {
             >
               <Image src={logo} alt="" height={100} quality={100} priority />
               <Typography sx={TituloDaPagina}>
-                Consulta / Atualização de dados
+                Atualização de dados
               </Typography>
               <Typography sx={SubtituloDaPagina}>EMEF SANTA CORONA</Typography>
             </Box>
@@ -141,12 +141,7 @@ export default function UpdateAlunos() {
                   ))}
               </Select>
             </FormControl>
-           
-              
-              <Button variant="contained" color="error" type="button" onClick={() => reset()}>
-                Limpar
-              </Button>
-        
+
           </Box>
           <List sx={ListStyle}>
             <Typography sx={TituloSecaoStyle}>
