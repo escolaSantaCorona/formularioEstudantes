@@ -1,44 +1,51 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
+import { FormDataAlunos } from '@/interfaces/Interface';
+
+
+// Tipos permitidos para o método HTTP
+type HttpMethod = 'GET' | 'POST' | 'PUT';
+
+// Função para validar os dados de entrada e o método HTTP
+const validateInput = (method: HttpMethod | undefined, data: FormDataAlunos): boolean => {
+  const validMethods: HttpMethod[] = ['GET', 'POST', 'PUT'];
+  if (!method || !validMethods.includes(method)) {
+    return false;
+  }
+
+  // Adicionar mais validações se necessário
+  // ...
+
+  return true;
+};
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const method = req.query.method as string; // Extract the method from the query
-  let url: string;
-//atualizando proxy
-  // The URL is the same for GET, POST, and PUT in this case
-  url = 'https://script.google.com/macros/s/AKfycbxTs2rDuOyVe8ddQgyejBuSf8SJdY0DQxpNoSBVxVNf6LPJyOvqga6GLmlXTDZQlIdn/exec';
+  const httpMethod = req.method as HttpMethod | undefined;
+  const url = 'https://script.google.com/macros/s/AKfycbxTs2rDuOyVe8ddQgyejBuSf8SJdY0DQxpNoSBVxVNf6LPJyOvqga6GLmlXTDZQlIdn/exec';
+
+  // Validando o método e os dados de entrada
+  if (!validateInput(httpMethod, req.body as FormDataAlunos)) {
+    return res.status(400).json({ message: 'Dados de entrada inválidos.' });
+  }
 
   try {
-    // Determine the HTTP method to use based on the 'method' query parameter
-    let httpMethod;
-    switch (method) {
-      case 'update':
-        httpMethod = 'PUT';
-        break;
-      case 'get':
-        httpMethod = 'GET';
-        break;
-      default:
-        httpMethod = 'POST';
-    }
-
-    // Make the request to the Google Apps Script
-    console.log(`method: ${httpMethod}, url: ${url}, data: ${JSON.stringify(req.body)}`);
-    const response = await axios({
+    const axiosConfig: AxiosRequestConfig = {
       method: httpMethod,
       url,
-      data: httpMethod === 'GET' ? null : req.body, // Only send data for non-GET requests
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
+      headers: { 'Content-Type': 'application/json' },
+      ...(httpMethod !== 'GET' && { data: req.body }),
+    };
 
-    // Return the response from the Google Apps Script
+    const response = await axios(axiosConfig);
     res.status(200).json(response.data);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'An error occurred while making the request to the Google Apps Script.' });
+    if (axios.isAxiosError(err) && err.response) {
+      res.status(err.response.status).json({ message: err.response.data });
+    } else {
+      console.error(err);
+      res.status(500).json({ message: 'Ocorreu um erro interno no servidor.' });
+    }
   }
-}
+};
 
 export default handler;
