@@ -58,7 +58,7 @@ import { useData } from "@/context/Context";
     return (
       <Container>
         <TextField
-          label="Digite aqui o nome do professor que deseja pesquisar"
+          label="Digite aqui o nome do aluno que deseja pesquisar"
           value={inputValue}
           onChange={handleChange}
           variant="outlined"
