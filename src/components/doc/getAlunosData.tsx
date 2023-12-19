@@ -90,7 +90,7 @@ import { useData } from "@/context/Context";
                         {aluno.nome_do_aluno}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {aluno.ano_fundamental}
+                        {aluno.turma_em_2023}
                       </StyledTableCell>
                       <StyledTableCell align="center">
                         {String(aluno.turno)}
