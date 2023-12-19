@@ -32,6 +32,13 @@ export interface StudentTableProps {
   items: FormDataAlunos[];
 }
 
+export type AtestadoEscolaridadeInputsProps = {
+  id: string;
+  nome_do_aluno: string;
+  ano_fundamental: string;
+  turno: string;
+};
+
 
 export interface PaginationProps {
   pageCount: number;

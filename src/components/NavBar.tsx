@@ -27,6 +27,9 @@ function MyAppBar() {
       <Link style={linkStyles} href="/Table">
         Lista de alunos
       </Link>
+      <Link style={linkStyles} href="/generateAtestado">
+        Atestado de Escolaridade
+      </Link>
      
     </Toolbar>
   </AppBar>

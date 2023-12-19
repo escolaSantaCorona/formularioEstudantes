@@ -124,6 +124,24 @@ export function formatDate(isoString: string | null | undefined): string {
   return `${day}/${month}/${year}`;
 }
 
+export default function getMonthName(monthNumber: number) {
+  const months = [
+      'janeiro',
+      'fevereiro',
+      'março',
+      'abril',
+      'maio',
+      'junho',
+      'julho',
+      'agosto',
+      'setembro',
+      'outubro',
+      'novembro',
+      'dezembro'
+  ];
+  return months[monthNumber];
+}
+
 export function isMobileNumber(phoneNumber: string): boolean {
   // Verifique se o número é um celular com base no padrão específico
   return /^\d{5}-\d{4}$/.test(phoneNumber);
@@ -149,6 +167,8 @@ export function formatInternationalNumber(
   // Retorne o número formatado com o código do país e o código de área
   return "55" + areaCode + numberWithoutDashes;
 }
+
+
 
 export const BoxStyleCadastro = {
   backgroundColor: "#ffffff",
