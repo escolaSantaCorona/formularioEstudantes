@@ -93,7 +93,7 @@ import { useData } from "@/context/Context";
                         {aluno.ano_fundamental}
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        {String(aluno.ano_fundamental)}
+                        {String(aluno.turno)}
                       </StyledTableCell>
                      
                       <StyledTableCell align="center">
