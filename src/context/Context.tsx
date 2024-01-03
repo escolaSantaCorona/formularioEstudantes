@@ -44,7 +44,7 @@ const DataProvider: React.FC<ChildrenProps> = ({ children }) => {
   useEffect(() => {
     const getDataToApi = async () => {
       try {
-        const response = await axios.get("https://script.google.com/macros/s/AKfycbxTs2rDuOyVe8ddQgyejBuSf8SJdY0DQxpNoSBVxVNf6LPJyOvqga6GLmlXTDZQlIdn/exec");
+        const response = await axios.get("https://script.google.com/macros/s/AKfycbxVmJPlHkwS_vHsBlprRp5lQCsTJ9UAtIm_iQQniKM9GOBf8waKeo4QnzIbPTLeUoz2/exec");
         setData(response.data);
       } catch (error) {
         console.error("Ocorreu um erro ao buscar dados da API:", error);
