@@ -160,7 +160,7 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(
                 <StyledTableCell align="center">{item.mae}</StyledTableCell>
                 <StyledTableCell align="center">{item.pai}</StyledTableCell>
                 <StyledTableCell align="center">
-                  {item.turma_em_2023}
+                  {item.turma_em_2024}
                 </StyledTableCell>
 
                 <StyledTableCell align="center">
