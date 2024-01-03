@@ -37,7 +37,7 @@ export type AtestadoEscolaridadeInputsProps = {
   nome_do_aluno: string;
   ano_fundamental: string;
   turno: string;
-  turma_em_2023?:string
+  turma_em_2024?:string
 };
 
 
