@@ -55,7 +55,7 @@ export const CamposdeDadosPessoais = [
 export const CamposdeEscolarizacao = [
   {
     label: "Turma em 2024",
-    id: "turma_em_2024",
+    id: "turma_em_2023",
     type: "select",
     options: turmas,
   },
