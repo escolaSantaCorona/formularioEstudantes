@@ -9,7 +9,7 @@ export interface FormDataAlunos {
     livro: string;
     mae: string;
     pai: string;
-    turma_em_2023: string;
+    turma_em_2024: string;
     ano_fundamental: string;
     turno: string;
     movimentacao: string;
