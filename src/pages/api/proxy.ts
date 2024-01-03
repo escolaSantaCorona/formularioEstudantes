@@ -21,7 +21,7 @@ const validateInput = (method: HttpMethod | undefined, data: FormDataAlunos): bo
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const httpMethod = req.method as HttpMethod | undefined;
-  const url = 'https://script.google.com/macros/s/AKfycbxTs2rDuOyVe8ddQgyejBuSf8SJdY0DQxpNoSBVxVNf6LPJyOvqga6GLmlXTDZQlIdn/exec';
+  const url = 'https://script.google.com/macros/s/AKfycbxVmJPlHkwS_vHsBlprRp5lQCsTJ9UAtIm_iQQniKM9GOBf8waKeo4QnzIbPTLeUoz2/exec';
 
   // Validando o método e os dados de entrada
   if (!validateInput(httpMethod, req.body as FormDataAlunos)) {
