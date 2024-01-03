@@ -34,7 +34,7 @@ export const CreateDocx = async (aluno: AtestadoEscolaridadeInputsProps) => {
       let paragraph;
       
 
-        paragraph = `       Atestamos, para os devidos fins, que o(a) estudante ${aluno.nome_do_aluno} está regularmente matriculado(a) em nosso estabelecimento de ensino no ano letivo de 2023. O(a) aluno(a) está cursando, atualmente, o ${aluno.ano_fundamental}, no turno da ${aluno.turno}.  `;
+        paragraph = `       Atestamos, para os devidos fins, que o(a) estudante ${aluno.nome_do_aluno} está regularmente matriculado(a) em nosso estabelecimento de ensino no ano letivo de 2024. O(a) aluno(a) está cursando, atualmente, o ${aluno.ano_fundamental}, no turno da ${aluno.turno}.  `;
       
       const formattedDate = `Caxias do Sul, ${todayDate.getDate()} de ${getMonthName(
         todayDate.getMonth()
