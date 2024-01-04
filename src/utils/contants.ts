@@ -60,7 +60,7 @@ export const CamposdeEscolarizacao = [
     options: turmas,
   },
   {
-    label: "Ano Escolar (Fundamental)",
+    label: "Ano do ensino Fundamental)",
     id: "ano_fundamental",
     type: "select",
     options: anos_escolares,
@@ -74,7 +74,7 @@ export const CamposdeMovimentacaoEscolar = [
     label: "Tipo de Movimentação do Aluno",
     id: "movimentacao",
     type: "select",
-    options: ["A/C", "T", "MT"],
+    options: ["A/C"],
   },
   { label: "Data da Matrícula", id: "data_movimento" },
   {
