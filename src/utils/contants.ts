@@ -76,10 +76,9 @@ export const CamposdeMovimentacaoEscolar = [
     type: "select",
     options: ["A/C", "T", "MT"],
   },
-  { label: "Data da Matrícula (Aluno Novo)", id: "data_matricula" },
-  { label: "Data da Movimentação (Aluno Matriculado)", id: "data_movimento" },
+  { label: "Data da Matrícula", id: "data_movimento" },
   {
-    label: "Escola de Transferência (Origem/Destino)",
+    label: "Escola de Origem",
     id: "transferencia_escola_destino",
   },
 ];
@@ -99,10 +98,9 @@ export const CamposdeEscolarizacaotoUpdate = [
 ];
 export const CamposdeMovimentacaoEscolarToUpdate = [
   { label: "Tipo de Movimentação do Aluno", id: "movimentacao" },
-  { label: "Data da Matrícula", id: "data_matricula" },
-  { label: "Data da Movimentação (Aluno Matriculado)", id: "data_movimento" },
+ { label: "Data da Transferencia", id: "data_movimento" },
   {
-    label: "Escola de Transferência (Origem/Destino)",
+    label: "Escola de Destino",
     id: "transferencia_escola_destino",
   },
 ];
