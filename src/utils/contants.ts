@@ -1,5 +1,5 @@
 const turmas = [
-  "Educação Infantil-Turma de 4 anos",
+  "Educação Infantil-Turma de 4 e 5 anos",
   "Educação Infantil-Turma de 5 anos",
   "1º ANO A",
   "2º ANO A",
@@ -19,7 +19,7 @@ const turmas = [
 ];
 
 const anos_escolares = [
-  "Educação Infantil-Turma de 4 anos",
+  "Educação Infantil-Turma de 4 e 5 anos",
   "Educação Infantil-Turma de 5 anos",
   "1° ano do 1º ciclo do ensino fundamental",
   "2° ano do 1º ciclo do ensino fundamental",
