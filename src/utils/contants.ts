@@ -2,6 +2,7 @@ const turmas = [
   "Educação Infantil-Turma de 4 e 5 anos",
   "Educação Infantil-Turma de 5 anos",
   "1º ANO A",
+  "1º ANO B",
   "2º ANO A",
   "3º ANO A",
   "3º ANO B",
