@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Box,
   Button,
   Container,
@@ -7,13 +8,14 @@ import {
   InputLabel,
   List,
   MenuItem,
+  Popper,
   Select,
   SelectChangeEvent,
   TextField,
   Typography,
 } from "@mui/material";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { ElementType, JSX, RefAttributes, useEffect, useState } from "react";
 import { useData } from "@/context/Context";
 import { FormDataAlunos } from "@/interfaces/Interface";
 import {
@@ -33,8 +35,9 @@ import {
 } from "@/utils/contants";
 import Image from "next/image";
 import logo from "../assets/logo.png";
-import { useTheme } from "@mui/material/styles";
+import { SxProps, Theme, useTheme } from "@mui/material/styles";
 import MyAppBar from "@/components/NavBar";
+import { PopperProps, SlotComponentProps, PopperRootSlotPropsOverrides, PopperOwnProps } from "@mui/base";
 export default function UpdateAlunos() {
   const theme = useTheme();
   const [isSending, setisSending] = useState(false);
@@ -74,9 +77,7 @@ export default function UpdateAlunos() {
     }
   }, [searchName]);
 
-  const handleSearchNameChange = (event: SelectChangeEvent<string>) => {
-    setSearchName(event.target.value);
-  };
+
 
   const onSubmit: SubmitHandler<FormDataAlunos> = async (formData) => {
     setisSending(true); // Defina isSending como true antes de enviar os dados
@@ -92,8 +93,8 @@ export default function UpdateAlunos() {
   };
 
   return (
-    <Container sx={{display:'flex',flexDirection:'column'}}>
-      <MyAppBar/>
+    <Container sx={{ display: 'flex', flexDirection: 'column' }}>
+      <MyAppBar />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box sx={BoxStyleCadastro}>
           <Box sx={{ display: "table", width: "100%" }}>
@@ -123,23 +124,24 @@ export default function UpdateAlunos() {
               gap: theme.spacing(2),
             }}
           >
-            <Typography variant="h6" component="label" htmlFor="name">
-              NOME
-            </Typography>
+
             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-              <Select
-                className="form-input"
+              <Autocomplete
                 value={searchName}
-                onChange={handleSearchNameChange}
-              >
-                <MenuItem value="-">-</MenuItem>
-                {Array.isArray(data) &&
-                  data.map((item, key) => (
-                    <MenuItem key={key} value={item.nome_do_aluno}>
-                      {item.nome_do_aluno}
-                    </MenuItem>
-                  ))}
-              </Select>
+                onChange={(event, newValue) => {
+                  setSearchName(newValue ?? '');
+                }}
+                inputValue={searchName}
+                onInputChange={(event, newInputValue) => {
+                  setSearchName(newInputValue ?? '');
+                }}
+                id="autocomplete-student-name"
+                options={Array.isArray(data) ? data.map((option) => option.nome_do_aluno) : []}
+                sx={{ width: 300,marginBottom:"50px" }}
+                renderInput={(params) => <TextField sx={{position:"absolute"}} {...params} label="Nome do Aluno" />}
+
+              />
+
             </FormControl>
 
           </Box>
@@ -196,7 +198,7 @@ export default function UpdateAlunos() {
                       sx={{
                         borderRadius: "4px",
                       }}
-                     
+
                       {...register(id as keyof FormDataAlunos)}
                     />
                   </FormControl>
@@ -227,7 +229,7 @@ export default function UpdateAlunos() {
                       sx={{
                         borderRadius: "4px",
                       }}
-                   
+
                       {...register(id as keyof FormDataAlunos)}
                     />
                   </FormControl>
@@ -258,7 +260,7 @@ export default function UpdateAlunos() {
                       sx={{
                         borderRadius: "4px",
                       }}
-                     
+
                       {...register(id as keyof FormDataAlunos)}
                     />
                   </FormControl>
