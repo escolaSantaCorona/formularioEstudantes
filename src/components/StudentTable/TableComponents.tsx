@@ -93,17 +93,20 @@ export const SearchInput: React.FC<SearchInputProps> = React.memo(
 
 
 
-function renderPhoneNumbers(numbers: string): JSX.Element[] {
+function renderPhoneNumbers(numbers: any): JSX.Element[] {
+  // Verifica se numbers é uma string antes de chamar split
+  if (typeof numbers !== 'string') {
+    // Se não for uma string, retorna um elemento indicando o problema ou lida com a situação de outra forma
+    return [<span key="error">Número inválido</span>];
+  }
+  
+  // Continua como antes se numbers for uma string
   return numbers.split(',').map((numberWithLabel, idx) => {
-    // Removendo qualquer caracter não-numérico para criar o link
     const pureNumber = numberWithLabel.replace(/[^0-9]/g, '');
-
-    // Identificando se o número tem 11 dígitos, o que indica ser celular
     const isMobile = pureNumber.startsWith("9", 6) || pureNumber.startsWith("9", 5) || pureNumber.startsWith("9", 2);
 
-    // Renderização como link para celulares ou texto normal para outros números
     return (
-      <div key={idx}> {/* Cada número em um novo elemento de bloco */}
+      <div key={idx}>
         {isMobile ? (
           <a href={`https://wa.me/55${pureNumber}`} target="_blank" rel="noopener noreferrer">
             {numberWithLabel}
@@ -115,6 +118,7 @@ function renderPhoneNumbers(numbers: string): JSX.Element[] {
     );
   });
 }
+
 
 
 //certidao_cpf_rg
