@@ -28,12 +28,29 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: theme.palette.common.white,
     fontSize: 16,
     minWidth: 100, // Set a minimum width for the header cells
+
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 12,
     minWidth: 100, // Set a minimum width for the body cells
     cursor: 'pointer'
   },
+}));
+
+export const StyledTableCellDocNascimentoMovimento = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+    fontSize: 16,
+    maxWidth: 80, // Set a minimum width for the header cells
+
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 12,
+    maxWidth: 80, // Set a minimum width for the body cells
+    cursor: 'pointer'
+  },
+  
 }));
 
 
@@ -62,13 +79,13 @@ export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellPro
       paddingLeft: 16,
       paddingBottom: 10,
     },
-    // Here we're setting a conditional for when the content's length is greater than 14 characters.
-    // If the content is long, we're allowing it to break onto the next line to prevent overflow.
-    wordBreak: contentLength > 14 ? 'break-all' : 'normal',
-    // You might want to add a minWidth here as suggested, for example:
-    minWidth: contentLength > 14 ? '150px' : '100px', // Adjust minimum width based on content length
+    // Altere para aplicar a regra de quebra de linha para textos com mais de 11 caracteres
+    wordBreak: contentLength > 11 ? 'break-all' : 'normal',
+    minWidth: contentLength > 11 ? '150px' : '100px', // Ajuste a largura mínima com base no comprimento do conteúdo
   })
 );
+
+
 
 
 
@@ -168,12 +185,12 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(({ items }) 
                 <StyledTableCell align="center" onClick={() => handleCopyText(item.nome_do_aluno)}>
                   {item.nome_do_aluno}
                 </StyledTableCell>
-                <StyledTableCell align="center" onClick={() => handleCopyText(formatDate(item.data_de_nascimento))}>
+                <StyledTableCellDocNascimentoMovimento align="center" onClick={() => handleCopyText(formatDate(item.data_de_nascimento))}>
                   {formatDate(item.data_de_nascimento)}
-                </StyledTableCell>
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.certidao_cpf_rg)}>
+                </StyledTableCellDocNascimentoMovimento>
+                <StyledTableCellDocumentoText align="center" onClick={() => handleCopyText(item.certidao_cpf_rg)} contentLength={item.certidao_cpf_rg.length}>
                   {item.certidao_cpf_rg}
-                </StyledTableCell>
+                </StyledTableCellDocumentoText>
                 <StyledTableCell align="center" onClick={() => handleCopyText(item.mae)}>
                   {item.mae}
                 </StyledTableCell>
@@ -186,12 +203,12 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(({ items }) 
                 <StyledTableCell align="center">
                   {renderPhoneNumbers(item.telefone)}
                 </StyledTableCell>
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.movimentacao)}>
+                <StyledTableCellDocNascimentoMovimento align="center" onClick={() => handleCopyText(item.movimentacao)}>
                   {item.movimentacao}
-                </StyledTableCell>
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.data_movimento)}>
+                </StyledTableCellDocNascimentoMovimento>
+                <StyledTableCellDocNascimentoMovimento align="center" onClick={() => handleCopyText(item.data_movimento)}>
                   {formatDate(item.data_movimento)}
-                </StyledTableCell>
+                </StyledTableCellDocNascimentoMovimento>
 
 
 
