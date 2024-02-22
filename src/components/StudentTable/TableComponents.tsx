@@ -1,93 +1,26 @@
 /* eslint-disable react/display-name */
 import React from "react";
-import { styled, tableCellClasses, TableCell, TableRow, Link, Typography, PaginationProps, IconButton, Tooltip } from "@mui/material";
 import {
   Table,
   TableBody,
   TableContainer,
   TableHead,
   Paper,
+  TableRow
 } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './table.module.css'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { SearchInputProps, StudentTableProps } from "@/interfaces/Interface";
-import { formatDate } from "@/utils/contants";
+import { StyledDefaultCell, StyledEventDateCell, StyledDocumentCell, StyledTableRow, formatDate } from "@/utils/contants";
 import { TableCellProps } from '@mui/material/TableCell';
 import { useCopyToClipboard } from "@/hooks/useCopyToClipboard";
 
 
 
-interface StyledTableCellProps extends TableCellProps {
+export interface StyledTableCellProps extends TableCellProps {
   contentLength: number;
 }
-
-export const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    fontSize: 16,
-    minWidth: 100, // Set a minimum width for the header cells
-
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 12,
-    minWidth: 100, // Set a minimum width for the body cells
-    cursor: 'pointer'
-  },
-}));
-
-export const StyledTableCellDocNascimentoMovimento = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-    fontSize: 16,
-    maxWidth: 80, // Set a minimum width for the header cells
-
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 12,
-    maxWidth: 80, // Set a minimum width for the body cells
-    cursor: 'pointer'
-  },
-  
-}));
-
-
-export const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  "&:last-child td, &:last-child th": {
-    border: 0,
-    paddingTop: 16,
-    paddingLeft: 16,
-    paddingBottom: 10,
-  },
-}));
-
-export const StyledTableCellDocumentoText = styled(TableCell)<StyledTableCellProps>(
-  ({ theme, contentLength }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-      fontSize: 16,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 12,
-      paddingTop: 16,
-      paddingLeft: 16,
-      paddingBottom: 10,
-    },
-    // Altere para aplicar a regra de quebra de linha para textos com mais de 11 caracteres
-    wordBreak: contentLength > 11 ? 'break-all' : 'normal',
-    minWidth: contentLength > 11 ? '150px' : '100px', // Ajuste a largura mínima com base no comprimento do conteúdo
-  })
-);
-
-
-
-
 
 export const SearchInput: React.FC<SearchInputProps> = React.memo(
   ({ value, onChange }) => (
@@ -162,56 +95,52 @@ export const StudentTable: React.FC<StudentTableProps> = React.memo(({ items }) 
         <Table sx={{ minWidth: 700 }}>
           <TableHead>
             <TableRow>
-
-              <StyledTableCell align="center">ID</StyledTableCell>
-              <StyledTableCell align="center">Nome</StyledTableCell>
-              <StyledTableCell align="center">Nasc.</StyledTableCell>
-              <StyledTableCell align="center">Doc.</StyledTableCell>
-              <StyledTableCell align="center">Mãe</StyledTableCell>
-              <StyledTableCell align="center">Pai</StyledTableCell>
-              <StyledTableCell align="center">Turma</StyledTableCell>
-              <StyledTableCell align="center">Fone</StyledTableCell>
-              <StyledTableCell align="center">Mov.</StyledTableCell>
-              <StyledTableCell align="center">Data.Mov</StyledTableCell>
+              <StyledDefaultCell align="center">ID</StyledDefaultCell>
+              <StyledDefaultCell align="center">Nome</StyledDefaultCell>
+              <StyledDefaultCell align="center">Nasc.</StyledDefaultCell>
+              <StyledDefaultCell align="center">Doc.</StyledDefaultCell>
+              <StyledDefaultCell align="center">Mãe</StyledDefaultCell>
+              <StyledDefaultCell align="center">Pai</StyledDefaultCell>
+              <StyledDefaultCell align="center">Turma</StyledDefaultCell>
+              <StyledDefaultCell align="center">Fone</StyledDefaultCell>
+              <StyledDefaultCell align="center">Mov.</StyledDefaultCell>
+              <StyledDefaultCell align="center">Data.Mov</StyledDefaultCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {items.map((item, index) => (
               <StyledTableRow key={index}>
                 {/* Exemplo de célula com texto copiável */}
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.id.toString())} component="th" scope="row">
+                <StyledDefaultCell align="center" onClick={() => handleCopyText(item.id.toString())} component="th" scope="row">
                   {item.id}
-                </StyledTableCell>
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.nome_do_aluno)}>
+                </StyledDefaultCell>
+                <StyledDefaultCell align="center" onClick={() => handleCopyText(item.nome_do_aluno)}>
                   {item.nome_do_aluno}
-                </StyledTableCell>
-                <StyledTableCellDocNascimentoMovimento align="center" onClick={() => handleCopyText(formatDate(item.data_de_nascimento))}>
+                </StyledDefaultCell>
+                <StyledEventDateCell align="center" onClick={() => handleCopyText(formatDate(item.data_de_nascimento))}>
                   {formatDate(item.data_de_nascimento)}
-                </StyledTableCellDocNascimentoMovimento>
-                <StyledTableCellDocumentoText align="center" onClick={() => handleCopyText(item.certidao_cpf_rg)} contentLength={item.certidao_cpf_rg.length}>
+                </StyledEventDateCell>
+                <StyledDocumentCell align="center" onClick={() => handleCopyText(item.certidao_cpf_rg)} contentLength={item.certidao_cpf_rg.length}>
                   {item.certidao_cpf_rg}
-                </StyledTableCellDocumentoText>
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.mae)}>
+                </StyledDocumentCell>
+                <StyledDefaultCell align="center" onClick={() => handleCopyText(item.mae)}>
                   {item.mae}
-                </StyledTableCell>
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.pai)}>
+                </StyledDefaultCell>
+                <StyledDefaultCell align="center" onClick={() => handleCopyText(item.pai)}>
                   {item.pai}
-                </StyledTableCell>
-                <StyledTableCell align="center" onClick={() => handleCopyText(item.turma_em_2024)}>
+                </StyledDefaultCell>
+                <StyledDefaultCell align="center" onClick={() => handleCopyText(item.turma_em_2024)}>
                   {item.turma_em_2024}
-                </StyledTableCell>
-                <StyledTableCell align="center">
+                </StyledDefaultCell>
+                <StyledDefaultCell align="center">
                   {renderPhoneNumbers(item.telefone)}
-                </StyledTableCell>
-                <StyledTableCellDocNascimentoMovimento align="center" onClick={() => handleCopyText(item.movimentacao)}>
+                </StyledDefaultCell>
+                <StyledEventDateCell align="center" onClick={() => handleCopyText(item.movimentacao)}>
                   {item.movimentacao}
-                </StyledTableCellDocNascimentoMovimento>
-                <StyledTableCellDocNascimentoMovimento align="center" onClick={() => handleCopyText(item.data_movimento)}>
+                </StyledEventDateCell>
+                <StyledEventDateCell align="center" onClick={() => handleCopyText(item.data_movimento)}>
                   {formatDate(item.data_movimento)}
-                </StyledTableCellDocNascimentoMovimento>
-
-
-
+                </StyledEventDateCell>
               </StyledTableRow>
             ))}
           </TableBody>
