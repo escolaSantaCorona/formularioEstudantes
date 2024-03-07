@@ -80,6 +80,7 @@ export const CamposdeMovimentacaoEscolar = [
     options: ["A/C"],
   },
   { label: "Data da Matrícula", id: "data_movimento" },
+  { label: "Data para planilha origem dos estudantes", id: "data_matricula" },
   {
     label: "Escola de Origem",
     id: "transferencia_escola_destino",
