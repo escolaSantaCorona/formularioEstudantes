@@ -7,7 +7,7 @@ import getMonthName from "../../utils/contants";
 import {AtestadoEscolaridadeInputsProps} from "../../interfaces/Interface"
 
 
-const url ="https://firebasestorage.googleapis.com/v0/b/profs-database.appspot.com/o/ATESTADO%20DE%20ESCOLARIDADE-TEMPLATE%20(1).docx?alt=media&token=5551018f-3a08-4278-b15f-811008a7874c";
+const url ="https://firebasestorage.googleapis.com/v0/b/profs-database.appspot.com/o/ATESTADO%20DE%20ESCOLARIDADE-TEMPLATE%20(1)%20(2).docx?alt=media&token=dac90ea5-1d32-4cec-a9a5-920703983fd7";
 export const CreateDocx = async (aluno: AtestadoEscolaridadeInputsProps) => {
   const pathReference = ref(storage, url);
 
