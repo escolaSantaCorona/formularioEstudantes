@@ -84,6 +84,19 @@ export const CamposdeMovimentacaoEscolar = [
   {
     label: "Escola de Origem",
     id: "transferencia_escola_destino",
+    type: "select",
+    options: [
+      "Escola Particular de CxSul",
+      "Escola Municipal de CxSul",
+      "Escola Estadual de CxSul",
+      "Escola de Educação Infantil - Gestão Compartilhada de CxSul",
+      "Escola de Educação Infantil Particular de CxSul",
+      "Vaga paga pelo município em Escola de Educação Infantil Particular de CxSul",
+      "Outro Município do RS",
+      "Outro Estado",
+      "Outro País",
+      "Estava em casa(não frequentava outra escola)"
+    ]
   },
 ];
 
